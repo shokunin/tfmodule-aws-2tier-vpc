@@ -17,6 +17,7 @@ resource "aws_nat_gateway" "private" {
   allocation_id = "${element(aws_eip.private-nat-eip.*.id, count.index)}"
   subnet_id     = "${element(aws_subnet.public.*.id, count.index)}"
   depends_on    = ["aws_internet_gateway.vpc"]
+  tags          = merge({ Name = "${var.vpc-name}-private-${element(var.vpc-azs, count.index)}" }, var.common-tags)
 }
 
 resource "aws_route" "nat_gateway" {
