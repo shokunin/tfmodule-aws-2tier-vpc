@@ -9,6 +9,7 @@ resource "aws_subnet" "private" {
 resource "aws_eip" "private-nat-eip" {
   count      = "${length(var.vpc-azs)}"
   vpc        = true
+  tags       = merge({ Name = "${var.vpc-name}-nat-eip-${count.index}" }, var.common-tags)
   depends_on = ["aws_internet_gateway.vpc"]
 }
 
