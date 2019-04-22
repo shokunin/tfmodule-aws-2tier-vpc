@@ -23,5 +23,5 @@ resource "aws_route_table_association" "public" {
 resource "aws_route_table" "public_route_table" {
   count  = "${length(var.vpc-azs)}"
   vpc_id = "${aws_vpc.vpc.id}"
-  tags   = merge({ Name = "${var.vpc-name}-Public}" }, var.common-tags)
+  tags   = merge({ Name = "${var.vpc-name}-public-${element(var.vpc-azs, count.index)}" }, var.common-tags)
 }
