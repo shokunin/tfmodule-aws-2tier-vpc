@@ -25,23 +25,12 @@ variable "map-public-ip-on-launch" {
 }
 
 variable "vpc-azs" {
-  type        = "list"
+  type        = list(string)
   description = "The list of approved azs eg: ['us-west-1a', 'us-west-1c']"
 }
 
 variable "common-tags" {
-  type        = map
+  type        = map(string)
   description = "Tags that go everywhere"
 }
-
-
-
-
-
-
-
-
-
-
-
 
