@@ -34,3 +34,7 @@ variable "common-tags" {
   description = "Tags that go everywhere"
 }
 
+variable "enable-private" {
+  description = "Enable Private Networks"
+  default     = true
+}
